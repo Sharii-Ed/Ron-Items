@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ron-items</title>
+     <!-- <link rel="stylesheet" href="projectJS.css"> -->
+
+     <style>
+         *{
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+        }
+        body{
+            background-color: rgba(228, 158, 158, 0.1);
+        }
+        header{
+            display: flex;
+            justify-content: space-between;
+            background-color: rgb(224, 174, 174);           
+            align-items: center;
+            padding-left: 10px;
+            padding-right: 10px;
+            height: 50px;
+            position: fixed;
+            width: 100%;
+            color: black;
+        }
+        nav ul{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 700px;
+            list-style-type: none; 
+        }
+        nav a:hover{
+            font-size: 15px;
+            color: rgb(89, 33, 33);
+        }
+         a{
+            text-decoration: none;
+            color: black;
+        }
+        
+        .products{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            text-align: center;
+            padding: 0 10px 10px 10px;
+        }
+        .category-section {
+            width: 100%;
+            /* margin-top: 30px; */
+        }
+        .category-header {
+            background-color: rgb(86, 41, 41);
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 20px 0 10px 0;
+            border-radius: 5px;
+        }
+        .category-products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            text-align: center;
+            padding: 0 10px 10px 10px;
+        }
+        .prod{
+            min-height: fit-content;
+            width: 300px;
+            border: 1px solid black;
+            /* border-radius: 10px; */
+            /* padding: 10px; */
+            box-shadow: 5px 5px 6px 3px rgba(0, 0, 0, 0.3);
+            padding-bottom: 10px;
+        }
+        .prod img{
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            padding: 15px;
+        }
+        .cart{
+            background-color: rgb(86, 41, 41);
+            border: none;
+            color: azure;
+            border-radius: 2px;
+            height: 25px;
+            width: 5.5em;
+        }
+        .cart:hover{
+            scale: 0.9;
+            cursor:pointer;
+        }
+        .cart-btn{
+            background-color: rgb(86, 41, 41);
+            border: none;
+            color: white;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        .cart-btn:hover{
+            background-color: rgb(224, 174, 174);
+            color: black;
+        }
+        .cart-summary{
+            max-width: 1100px;
+            margin: 20px auto;
+            background-color: rgba(255,255,255,0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .cart-summary h2{
+            color: rgb(86, 41, 41);
+            margin-bottom: 15px;
+        }
+        .cart-items{
+            display: grid;
+            gap: 10px;
+        }
+        .cart-item{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            background: rgba(224, 174, 174, 0.1);
+        }
+        .cart-item button{
+            background-color: rgb(86, 41, 41);
+            border: none;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cart-item button:hover{
+            background-color: rgb(224, 174, 174);
+            color: black;
+        }
+        .cart-empty{
+            color: rgb(86, 41, 41);
+        }
+        .cart-total{
+            margin-top: 15px;
+            font-weight: bold;
+            color: rgb(86, 41, 41);
+        }
+        section{
+            min-height: 100dvh;
+            padding-top: 30px; /* Space for fixed header */
+        }
+        .sales{
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 20px;
+            padding: 0 25px;
+            /* background-color: aqua; */
+        }
+        .women{
+            grid-row:1/3 ;
+        }
+        .WM{
+            border-radius: 5px;
+            border: 1px solid black;      
+            padding: 20px;
+            background-color: rgba(228, 158, 158, 0.3);
+        }
+        .sales ul{
+            padding: 15px;
+        }
+        .best{
+            text-align: center;
+            padding: 20px;
+            background-color: rgb(224, 174, 174);
+        }
+        .contact{
+            height: 20dvh;
+            /* background-color: black; */
+            text-align: center;
+            align-content: end;
+        }
+        .contact b{
+            font-size: 2em;
+        }
+        .it{
+            background-color: rgb(224, 174, 174);
+            /* padding-bottom:10px; */
+            height: 2.5em;
+            align-content: center;
+            /* padding-left: 20px; */
+            text-align: center;
+            
+        }
+        .login-input{
+            border: 1px solid;
+            outline: none;
+            height: 2.5em;
+            width: 20em;
+            border-radius: 9px;
+            background-color: rgb(203, 127, 140);
+            padding-left: 5px;
+            color: rgb(86, 41, 41);
+        }
+        .head-input{
+            border: 1px solid;
+            outline: none;
+            height: 1.8em;
+            width: 20em;
+            border-radius: 9px;
+            background-color: rgb(203, 127, 140);
+            padding-left: 5px;
+            color: rgb(86, 41, 41);
+        }
+
+            /* Contact Section */
+    .contact{
+        padding: 50px 10px 30px;
+        background-color: rgba(224, 174, 174, 0.25);
+        text-align: center;
+    }
+    .contact-container{
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        padding: 30px;
+    }
+    .contact-info, .contact-form{
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
+        text-align: left;
+    }
+    .contact-info h3, .contact-form h3{
+        color: rgb(86, 41, 41);
+        margin-bottom: 20px;
+    }
+    .contact-info p{
+        margin: 12px 0;
+        font-size: 1.05rem;
+    }
+    .social-links{
+        margin-top: 25px;
+    }
+    .social-links a{
+        font-size: 1.8rem;
+        margin-right: 15px;
+        color: rgb(86, 41, 41);
+        transition: 0.3s;
+    }
+    .social-links a:hover{
+        color: rgb(224, 174, 174);
+        transform: scale(1.2);
+    }
+
+    /* Form Styles */
+    .contact-form input{
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 1px solid rgb(224, 174, 174);
+        border-radius: 5px;
+        font-size: 1rem;
+        outline: none;
+    }
+    .contact-form input:focus{
+        border-color: rgb(86, 41, 41);
+    }
+    .submit-btn{
+        background-color: rgb(86, 41, 41);
+        color: white;
+        border: none;
+        padding: 14px 40px;
+        font-size: 1.1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        transition: 0.3s;
+    }
+    .submit-btn:hover{
+        background-color: rgb(224, 174, 174);
+        color: black;
+    }
+
+    .footer-bottom{
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(0,0,0,0.1);
+        color: #555;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .contact-container{
+            grid-template-columns: 1fr;
+        }
+    }
+
+
+    /* welcomepage */
+
+        /* Welcome Hero Section */
+    .welcome-hero {
+        /* height: 100vh ; */
+        background: 
+                    /* url('https://source.unsplash.com/random/1600x900/?fashion,beauty')*/ center/cover no-repeat; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        /* position: relative; */
+        padding-top: 50px; /*Space for fixed header*/
+    }
+
+    .welcome-content {
+        z-index: 2;
+        max-width: 900px;
+        padding: 20px;
+    }
+
+    .welcome-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .welcome-left {
+        font-size: 4.5rem;
+        font-weight: bold;
+        color: white;
+        text-shadow: 3px 3px 10px rgba(0,0,0,0.6);
+        animation: slideFromLeft 1.2s ease forwards;
+        /* opacity: 0; */
+    }
+
+    .welcome-right {
+        font-size: 4.5rem;
+        font-weight: bold;
+        color: rgb(224, 174, 174);
+        text-shadow: 3px 3px 10px rgba(0,0,0,0.6);
+        animation: slideFromRight 1.2s ease forwards;
+        /* opacity: 0; */
+    }
+
+    .welcome-tagline {
+        font-size: 1.6rem;
+        color: white;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        animation: fadeIn 1.8s ease forwards;
+        /* opacity: 0; */
+    }
+
+    .shop-now-btn {
+        background-color: rgb(86, 41, 41);
+        color: white;
+        border: none;
+        padding: 16px 45px;
+        font-size: 1.3rem;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.4s;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .shop-now-btn:hover {
+        background-color: rgb(224, 174, 174);
+        color: black;
+        transform: scale(1.08);
+    }
+
+    /* Animations */
+    @keyframes slideFromLeft {
+        0% {
+            opacity: 0;
+            transform: translateX(-150px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideFromRight {
+        0% {
+            opacity: 0;
+            transform: translateX(150px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(30px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .welcome-left, .welcome-right {
+            font-size: 3rem;
+        }
+        .welcome-tagline {
+            font-size: 1.3rem;
+        }
+    }
+        /* section {
+         scroll-margin-top: 60px;  Helps anchor links work better
+    } */
+        
+     </style>
+</head>
+<body>
+
+     <header>
+        <h1>RON-ITEMS</h1>
+        <nav>
+            <ul>
+                <li><a href="projectJS.html">HOME</a></li>
+                <li><a href="#best-seller">BEST-SELLER</a></li>
+                <li><a href="#contact">CONTACT/LOGIN</a></li>
+                <li><input id="searchInput" type="text" placeholder="search product" class="head-input"></li>
+                <li><button id="cartButton" class="cart-btn">Cart (<span id="cart-count">0</span>)</button></li>
+            </ul>
+        </nav>
+    </header>
+
+     <!-- <h2 class="it">ITEMS</h2>
+        <div id="categoriesContainer"></div>
+
+        <script src="projectJS.js"></script> -->
+
+    <section class="items" id="items">
+        <!-- <h2 class="it">ITEMS</h2> -->
+        <div id="categoriesContainer"></div>
+    </section>
+
+
+
+    <section class="best-sell" id="best-seller">
+
+  <h2 class="best">Shopping Preferences from OUR Store</h2>
+<div class="sales">
+  <div class=" WM women">
+    <h3> Items Women buy from US</h3>
+    <ul>
+      <li>Hydrating Facial Moisturizer</li><br>
+      <li>Matte Liquid Foundation</li><br>
+      <li>Eau de Parfum - Floral Scent</li><br>
+      <li>Glossy Nail Polish</li><br>
+      <li>Moisturizing Conditioner</li><br>
+      <li>Women's Floral Maxi Dress</li><br>
+      <li>Leather Tote Bag</li><br>
+      <li>Polarized Sunglasses</li>
+    </ul>
+  </div>
+
+  <div class="WM">
+    <h3> Items Men Buy from US</h3>
+    <ul>
+      <li>Men's Shaving Kit</li>
+      <li>Triple Blade Razor</li>
+      <li>Men's Denim Jacket</li>
+      <li>Men's Formal Shirt</li>
+      <li>Gaming Laptop</li>
+      <li>Wireless Bluetooth Headphones</li>
+    </ul>
+  </div>
+
+  <div class="WM">
+    <h3> Items Popular With Both Men & Women</h3>
+    <ul>
+      <li>Anti-Dandruff Shampoo</li>
+      <li>Nourishing Body Wash</li>
+      <li>Vitamin C Supplement</li>
+      <li>Unisex Casual Sneakers</li>
+      <li>Smartwatch - Fitness Tracker</li>
+      <li>Portable Bluetooth Speaker</li>
+      <li>Sunglasses</li>
+    </ul>
+  </div>
+
+  </div>
+
+    <!-- <section class="contact" id="contact">
+        <div class="end">
+        <p><b> RON-ITEMS</b>  RON-ITEMS copyright&copy; 2025. All Rights Reserved</p>
+         </div>
+    </section> -->
+        <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="it">GET IN TOUCH</h2>
+        <div class="contact-container">
+            
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p><strong>📍 Address:</strong> Port-Harcourt, Nigeria</p>
+                <p><strong>📞 Phone:</strong> +234 801 234 5678</p>
+                <p><strong>✉️ Email:</strong> ron-itemsph@gmail.com</p>
+                <p><strong>🕒 Business Hours:</strong> Mon - Sat: 9AM - 6PM</p>
+
+                <!-- <div class="social-links">
+                    <h4>Follow Us</h4>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div> -->
+            </div>
+
+            <div class="contact-form">
+                <h3>SIGN IN WITH US &#10024</h3>
+                <form id="contactForm">
+                    <input type="text" id="name" placeholder="Your Full Name" required class="login-input">
+                    <input type="email" id="email" placeholder="Your Email Address" required class="login-input">
+                    <!-- <input type="text" id="subject" placeholder="Subject"> -->
+                    <!-- <textarea id="message" placeholder="Your Message..." rows="6" required></textarea> -->
+                    <button type="submit" class="submit-btn">Login/Sign in</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p><strong>RON-ITEMS</strong> copy &copy; 2025. All Rights Reserved</p>
+        </div>
+    </section>
+
+    <script src="projectJs.js"></script>
+</body>
+</html>
