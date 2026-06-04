@@ -414,7 +414,7 @@
     }
 
     /* Responsive */
-    @media (max-width: 768px) {
+    @media (min-width: 768px) {
         .welcome-left, .welcome-right {
             font-size: 3rem;
         }
@@ -423,7 +423,7 @@
         }
     }
 
-    @media(max-width: 480px){
+    @media(max-width: 480px){ 
         .welcome-left, .welcome-right {
             font-size: 2.2rem;
         }
@@ -435,7 +435,13 @@
             height: auto;
             padding: 10px 0;
         }
-        
+        nav ul{
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            justify-content: center;
+        }
+
     }
         /* section {
          scroll-margin-top: 60px;  Helps anchor links work better
@@ -449,7 +455,7 @@
         <h1>RON-ITEMS</h1>
         <nav>
             <ul>
-                <li><a href="projectJS.html">HOME</a></li>
+                <li><a href="index.html">HOME</a></li>
                 <li><a href="#best-seller">BEST-SELLER</a></li>
                 <li><a href="#contact">CONTACT/LOGIN</a></li>
                 <li><input id="searchInput" type="text" placeholder="search product" class="head-input"></li>
