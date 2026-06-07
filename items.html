@@ -430,16 +430,24 @@
         .welcome-tagline {
             font-size: 1rem;
         }
-        header{
+        header{ 
+            display: flex;
+            justify-content: space-between;
             flex-direction: column;
             height: auto;
             padding: 10px 0;
         }
         nav ul{
             display: flex;
+            justify-content: space-between;
             flex-wrap: wrap;
             width: 100%;
             justify-content: center;
+        }
+        nav a{
+            display: flex;
+            gap: 5px;
+            margin: 10px;
         }
 
     }

@@ -434,18 +434,29 @@
         
     @media(max-width: 480px){
         header{
+            display: block;
             flex-direction: column;
             height: auto;
-            /* padding: 10px; */
+            /* padding: 10px;  */
+        }
+        h1{
+            font-size: 1.6rem;
+            padding: 10px 0 ;
+            text-align: center;
         }
         nav ul{
-            flex-direction: column;
+            display: flex;
+            flex-direction: row;
             width: 100%;
+            position: relative;
+            right:30px ;
+            
         }
         nav ul li{
-            margin: 5px 0;
+            margin: 5px;
+            display: block;
         }
-         .welcome-left, .welcome-right {
+         /* .welcome-left, .welcome-right {
             font-size: 2.5rem;
         }
          .welcome-tagline {
@@ -454,7 +465,7 @@
          .shop-now-btn {
             padding: 12px 30px;
             font-size: 1rem;
-        }
+        } */
     }
       </style>
 </head>
@@ -465,7 +476,7 @@
         <nav>
             <ul>
                 <li><a href="items.html">ITEMS</a></li>
-                <li><a href="items.html#best-seller">BEST-SELLER</a></li>
+                <li><a href="items.html#best-seller">BESTSELLER</a></li>
                 <li><a href="#contact">CONTACT/LOGIN</a></li>
                 <!-- <li><input id="searchInput" type="text" placeholder="search product" class="head-input"></li>
                 <li><button id="cartButton" class="cart-btn">Cart (<span id="cart-count">0</span>)</button></li> -->
