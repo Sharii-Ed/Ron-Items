@@ -164,7 +164,7 @@
             display: grid;
             grid-template-columns: auto auto;
             gap: 20px;
-            padding: 0 25px;
+            padding: 25px;
             /* background-color: aqua; */
         }
         .women{
@@ -181,7 +181,7 @@
         }
         .best{
             text-align: center;
-            padding: 20px;
+            padding: 10px;
             background-color: rgb(224, 174, 174);
         }
         .contact{
@@ -315,8 +315,7 @@
         /* Welcome Hero Section */
     .welcome-hero {
         /* height: 100vh ; */
-        background: 
-                    /* url('https://source.unsplash.com/random/1600x900/?fashion,beauty')*/ center/cover no-repeat; 
+        background:    /* url('https://source.unsplash.com/random/1600x900/?fashion,beauty')*/ center/cover no-repeat; 
         display: flex;
         align-items: center;
         justify-content: center;
@@ -449,11 +448,31 @@
             gap: 5px;
             margin: 10px;
         }
-
+        nav li{
+            display:flex;
+            gap: 5px;
+        }
+        .item{
+            padding-top:75px;
+        }
+        .items{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            /* padding: 0 10px; */
+        }
+        .category-products,
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            justify-items: center;
+        }
+        .prod{
+            width: 100%;
+            max-width: 100%;
+        }
     }
-        /* section {
-         scroll-margin-top: 60px;  Helps anchor links work better
-    } */
         
      </style>
 </head>
@@ -478,8 +497,10 @@
         <script src="projectJS.js"></script> -->
 
     <section class="items" id="items">
+        <div class ="item">
         <!-- <h2 class="it">ITEMS</h2> -->
         <div id="categoriesContainer"></div>
+        </div>
     </section>
 
 
